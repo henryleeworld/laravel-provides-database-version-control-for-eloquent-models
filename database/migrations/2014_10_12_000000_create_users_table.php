@@ -1,9 +1,9 @@
 <?php
 
-use Redsnapper\LaravelVersionControl\Database\Blueprint;
 use Redsnapper\LaravelVersionControl\Database\Migration;
+use Redsnapper\LaravelVersionControl\Database\Blueprint;
 
-class CreateUsersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateUsersTable extends Migration
     public function up()
     {
         $this->makeVcTables("users",function(Blueprint $table){
-            $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-        },function(Blueprint $table){
             $table->string('name');
-            $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->rememberToken();
+        },function(Blueprint $table){
+            $table->string('email');
+            $table->string('name');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->string('password');
+            $table->rememberToken();
         });
     }
 
@@ -34,4 +36,4 @@ class CreateUsersTable extends Migration
     {
         $this->dropVcTables('users');
     }
-}
+};

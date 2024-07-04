@@ -1,4 +1,4 @@
-# Laravel 9 提供 Eloquent 模型資料庫版本控制
+# Laravel 10 提供 Eloquent 模型資料庫版本控制
 
 引入 rs 的 laravel-version-control 套件來擴增提供 Eloquent 模型資料庫版本控制，維護模型資料的變動歷史記錄。
 
@@ -26,5 +26,5 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/mcwyGEd.png)
+![](https://i.imgur.com/eeesgHY.png)
 > 方便了解資料版本的變化

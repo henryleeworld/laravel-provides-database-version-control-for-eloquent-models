@@ -19,10 +19,10 @@ class UsersController extends Controller
     public function getVersion() 
     {
         $user = $this->user->firstOrFail();
-        echo '版本號：' . count($user->versions) . PHP_EOL;
+        echo '版本號：' . ($version = count($user->versions)) . PHP_EOL;
         echo '目前使用者電子郵件：' . $user->versions->last()->email . PHP_EOL;
         echo '更新使用者電子郵件' . PHP_EOL;
-        $user->email = "scarlett.johansson@henryleeworld.com";
+        $user->email = "scarlett.johansson." . $version . "@henryleeworld.com";
         $user->save();
         $user = $user->refresh();
         echo '版本號：' . count($user->versions) . PHP_EOL;

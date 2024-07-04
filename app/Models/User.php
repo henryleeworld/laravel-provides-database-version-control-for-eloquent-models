@@ -41,5 +41,6 @@ class User extends BaseModel
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'password' => 'hashed',
     ];
 }

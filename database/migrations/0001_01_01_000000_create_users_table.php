@@ -1,26 +1,25 @@
 <?php
 
-use Redsnapper\LaravelVersionControl\Database\Migration;
 use Redsnapper\LaravelVersionControl\Database\Blueprint;
+use Redsnapper\LaravelVersionControl\Database\Migration;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         $this->makeVcTables("users",function(Blueprint $table){
-            $table->string('email')->unique();
             $table->string('name');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
         },function(Blueprint $table){
-            $table->string('email');
             $table->string('name');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
@@ -29,11 +28,9 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        $this->dropVcTables('users');
+        Schema::dropIfExists('users');
     }
 };
